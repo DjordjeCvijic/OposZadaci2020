@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\djord\\source\\repos\\OposZadaci2020\\ClassLibrary1\\Zadatak1.csproj",
+      "projectUniqueName": "E:\\GIT\\OposZadaci2020\\ClassLibrary1\\Zadatak1.csproj",
       "projectName": "Zadatak1",
-      "projectPath": "C:\\Users\\djord\\source\\repos\\OposZadaci2020\\ClassLibrary1\\Zadatak1.csproj",
+      "projectPath": "E:\\GIT\\OposZadaci2020\\ClassLibrary1\\Zadatak1.csproj",
       "packagesPath": "C:\\Users\\djord\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\djord\\source\\repos\\OposZadaci2020\\ClassLibrary1\\obj\\",
+      "outputPath": "E:\\GIT\\OposZadaci2020\\ClassLibrary1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

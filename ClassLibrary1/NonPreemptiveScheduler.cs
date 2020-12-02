@@ -11,7 +11,8 @@ namespace MySchedulers
         private List<TaskToDo> listOfTasks = new List<TaskToDo>();
         private List<MyThread> threadPool = new List<MyThread>();
         private int numOfThreads=3;
-       
+        private Dictionary<Resurs, ResursSatus> mapOfResurs = new Dictionary<Resurs, ResursSatus>();
+
         public void addTask(TaskToDo task)
         {
             listOfTasks.Add(task);
@@ -20,37 +21,67 @@ namespace MySchedulers
         {
             numOfThreads = i;
         }
+        public void syncResurs(Resurs resurs)
+        {
+            mapOfResurs.Add(resurs, new ResursSatus());
+        }
 
         public void work()
         {
-
+            
             while (listOfTasks.Count != 0)
             {
                 TaskToDo task= listOfTasks[0];
-                listOfTasks.RemoveAt(0);
-                if (threadPool.Count < numOfThreads)
+                
+                if(isResursFree(task.resurs))
                 {
-                    MyThread thread = new MyThread();
-                    threadPool.Add(thread);
-                    thread.taskToDo = task;
-                    new Thread(thread.run).Start();
-                    Thread.Sleep(100);
+                   
+                    ResursSatus status = mapOfResurs.ContainsKey(task.resurs) ? mapOfResurs[task.resurs] : null;
+                    if (threadPool.Count < numOfThreads)
+                    {
+                       
+                        MyThread thread = new MyThread(status);
+                        threadPool.Add(thread);
+                        thread.taskToDo = task;
+                        listOfTasks.RemoveAt(0);
+                        new Thread(thread.run).Start();
+                        Thread.Sleep(100);
+                    }
+                    else
+                    {
+                        MyThread thread = getFreeThread();
+                        thread.resursStatus = status;
+                        thread.taskToDo = task;
+                        listOfTasks.RemoveAt(0);
+                        thread.stop = false;
+                        Thread.Sleep(100);
+
+                    }
+
                 }
                 else
                 {
-                    
-                   
-                        MyThread thread = getFreeThread();
-                        thread.taskToDo = task;
-                        thread.stop = false;
-                        Thread.Sleep(100);
-                    
-
+                    listOfTasks.RemoveAt(0);
+                    listOfTasks.Add(task);//OVIM STAVLJAM NA KRAJ LISTE;
                 }
-            }
+                
+            }//TREBA POGASITI SVE TREDOVE
             
 
         }
+
+        private bool isResursFree(Resurs resurs)
+        {
+            if (mapOfResurs.ContainsKey(resurs))
+            {
+                ResursSatus status = mapOfResurs[resurs];
+                return !status.inUse;
+            }
+            else
+                return true;
+            
+        }
+
         private MyThread getFreeThread()
         {
             MyThread t = null;
@@ -76,6 +107,11 @@ namespace MySchedulers
         private static int staticId=1;
         public int id = staticId++;
         public bool stop;
+        public ResursSatus resursStatus;
+        public MyThread(ResursSatus resursStatus)
+        {
+            this.resursStatus = resursStatus;
+        }
         public void run() {
            
             MethodDelegate fun = null;
@@ -83,6 +119,8 @@ namespace MySchedulers
             while (true)
             {
                 inRun = true;
+                if(resursStatus!=null)
+                    resursStatus.inUse = true;
                 while (taskToDo.listOfDelegates.Count != 0)
                 {
                     fun = taskToDo.listOfDelegates[0];
@@ -93,6 +131,8 @@ namespace MySchedulers
                     Thread.Sleep(timeToSleep);
 
                 }
+                if (resursStatus != null)
+                    resursStatus.inUse = false;
                 inRun = false;
                 stop = true;
                 while (stop) { }
@@ -132,5 +172,9 @@ namespace MySchedulers
             this.b = b;
         }
 
+    }
+    public class ResursSatus
+    {
+        public bool inUse = false;
     }
 }

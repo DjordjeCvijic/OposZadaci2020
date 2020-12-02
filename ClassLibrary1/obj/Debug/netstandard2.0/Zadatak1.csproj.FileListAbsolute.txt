@@ -7,3 +7,12 @@ C:\Users\djord\source\repos\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.
 C:\Users\djord\source\repos\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.AssemblyInfo.cs
 C:\Users\djord\source\repos\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.dll
 C:\Users\djord\source\repos\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.pdb
+E:\GIT\OposZadaci2020\ClassLibrary1\bin\Debug\netstandard2.0\Zadatak1.deps.json
+E:\GIT\OposZadaci2020\ClassLibrary1\bin\Debug\netstandard2.0\Zadatak1.dll
+E:\GIT\OposZadaci2020\ClassLibrary1\bin\Debug\netstandard2.0\Zadatak1.pdb
+E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.csprojAssemblyReference.cache
+E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.csproj.CoreCompileInputs.cache
+E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.AssemblyInfoInputs.cache
+E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.AssemblyInfo.cs
+E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.dll
+E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.pdb

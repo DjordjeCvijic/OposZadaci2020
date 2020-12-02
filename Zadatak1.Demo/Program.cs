@@ -14,7 +14,7 @@ namespace Zadatak1.Demo
         static void Main(string[] args)
         {
             NonPreemptiveScheduler scheduler = new NonPreemptiveScheduler();
-            scheduler.setNumOfThreads(4);
+            scheduler.setNumOfThreads(2);
             TaskToDo task1 = new TaskToDo();
             Resurs resurs1 = new Resurs(1, 2);
             task1.addResurs(resurs1);
@@ -42,6 +42,8 @@ namespace Zadatak1.Demo
             task3.addDelegate((int a, int b, int rez) => rez * a + a);
             task3.addDelegate((int a, int b, int rez) => rez * (int)Math.Pow((float)a, (float)b));
             scheduler.addTask(task3);
+
+            //scheduler.syncResurs(resurs1);
 
             scheduler.work();
             Console.ReadLine();
