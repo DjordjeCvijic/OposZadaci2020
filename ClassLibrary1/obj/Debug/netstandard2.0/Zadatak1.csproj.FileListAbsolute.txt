@@ -16,3 +16,4 @@ E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.AssemblyIn
 E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.AssemblyInfo.cs
 E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.dll
 E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1.pdb
+E:\GIT\OposZadaci2020\ClassLibrary1\bin\Debug\netstandard2.0\Zadatak1.xml

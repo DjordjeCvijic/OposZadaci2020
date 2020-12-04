@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>E:\GIT\OposZadaci2020\ClassLibrary1\Zadatak1.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

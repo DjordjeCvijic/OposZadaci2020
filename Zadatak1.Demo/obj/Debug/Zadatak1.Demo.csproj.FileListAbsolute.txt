@@ -212,3 +212,5 @@ E:\GIT\OposZadaci2020\Zadatak1.Demo\obj\Debug\Zadatak1.Demo.csproj.CoreCompileIn
 E:\GIT\OposZadaci2020\Zadatak1.Demo\obj\Debug\Zadatak1.Demo.csproj.CopyComplete
 E:\GIT\OposZadaci2020\Zadatak1.Demo\obj\Debug\Zadatak1.Demo.exe
 E:\GIT\OposZadaci2020\Zadatak1.Demo\obj\Debug\Zadatak1.Demo.pdb
+E:\GIT\OposZadaci2020\Zadatak1.Demo\bin\Debug\Zadatak1.Demo.xml
+E:\GIT\OposZadaci2020\Zadatak1.Demo\bin\Debug\Zadatak1.xml
