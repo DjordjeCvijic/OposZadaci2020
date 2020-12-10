@@ -1,9 +1,0 @@
-E:\GIT\OposZadaci2020\ClassLibrary1\bin\Debug\netstandard2.0\Zadatak1Test.deps.json
-E:\GIT\OposZadaci2020\ClassLibrary1\bin\Debug\netstandard2.0\Zadatak1Test.dll
-E:\GIT\OposZadaci2020\ClassLibrary1\bin\Debug\netstandard2.0\Zadatak1Test.pdb
-E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1Test.csprojAssemblyReference.cache
-E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1Test.csproj.CoreCompileInputs.cache
-E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1Test.AssemblyInfoInputs.cache
-E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1Test.AssemblyInfo.cs
-E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1Test.dll
-E:\GIT\OposZadaci2020\ClassLibrary1\obj\Debug\netstandard2.0\Zadatak1Test.pdb

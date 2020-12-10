@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Zadatak1</name>
+    </assembly>
+    <members>
+        <member name="T:MySchedulers.MethodDelegate">
+            <summary>
+            Delegat za funkcije od kojih ce biti sacinjen svaki zadatak.
+            Svaki funkcija u jednom zadatku mora da prima tri cjelobrojna argumenta i vraca cjelobrojan rezultat.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="rez"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MySchedulers.PreemptiveScheduler">
+            <summary>
+            Klasa kojom se vrsi preventivno rasporedjivanje procesa.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.PreemptiveScheduler.listOfTasks">
+            <summary>
+            Lista zadataka koji ce biti biti rasporedjeni na niti.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.PreemptiveScheduler.threadPool">
+            <summary>
+            Lista instanci klase MyThreadForPreemptiveScheduler na kojima ce biti izvrsivani zadaci.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.PreemptiveScheduler.numOfThreads">
+            <summary>
+            Broj niti koji ce biti na koristenju resporedjivacu.
+            Ako se ekcplicitno ne navede druga vrijednost,podrazumijevana je 3.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.PreemptiveScheduler.mapOfResursStatus">
+            <summary>
+            Mapa statusa resursa koji ce biti sinhronizovani pri rasporedjivanju.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.PreemptiveScheduler.mapOfTaskStatus">
+            <summary>
+            Mapa statusa zadataka u svakom trenutku procesa rasporedjivanja.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.PreemptiveScheduler.addTask(MySchedulers.TaskToDo)">
+            <summary>
+            Metoda za dodavanje zadataka u listu zadataka listOfTasks i mapu mapOfTaskStatus.
+            </summary>
+            <param name="task"></param>
+        </member>
+        <member name="M:MySchedulers.PreemptiveScheduler.setNumOfThreads(System.Int32)">
+            <summary>
+            Metoda za eksplicitno navodjenje maksimalnog broja niti koje ce biti kreirane u procesu rasporedjivanja.
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:MySchedulers.PreemptiveScheduler.syncResurs(MySchedulers.Resurs)">
+            <summary>
+            Metoda kojom se navodi resurs koji ce biti sinhronizovano modifikovan pri izvrsavanju zadataka koji ga posjeduju.
+            </summary>
+            <param name="resurs"></param>
+        </member>
+        <member name="M:MySchedulers.PreemptiveScheduler.work">
+            <summary>
+            Metoda kojom se pokrece rasporedjivanje
+            </summary>
+        </member>
+        <member name="M:MySchedulers.PreemptiveScheduler.doContextSwitching(MySchedulers.MyThreadForPreemptiveScheduler,MySchedulers.ObjectSatus,MySchedulers.ObjectSatus,MySchedulers.TaskToDo)">
+            <summary>
+            Metoda kojom se vrsi postavljanje resursa i potrebnih parametara za izvrsavanje zadatka na nekoj niti.
+            </summary>
+            <param name="thread"></param>
+            <param name="resursStatus"></param>
+            <param name="taskStatus"></param>
+            <param name="task"></param>
+        </member>
+        <member name="M:MySchedulers.PreemptiveScheduler.isAllThreadsWork">
+            <summary>
+            Metoda koja provjerava da li su sve niti u threadPool-u pokrenute.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.PreemptiveScheduler.isResursFree(MySchedulers.Resurs)">
+            <summary>
+            Metoda koja provjerava da li je prosljedjeni resurs zauzet od strane nekog zadatka koji se trenutno izvrsava.
+            </summary>
+            <param name="resurs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySchedulers.PreemptiveScheduler.getFreeThread">
+            <summary>
+            Metoda koja vraca nit koja je trenutno u stanju cekanja i moze se iskoristiti za izvrsavanje zadatka.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MySchedulers.MyThreadForPreemptiveScheduler">
+            <summary>
+            Klasa u kojoj je implementiran rad niti u preventivnom rasporedjivanju zadataka.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.MyThreadForPreemptiveScheduler.taskToDo">
+            <summary>
+            Zadatak koji se izvrsava na niti.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.MyThreadForPreemptiveScheduler.inRun">
+            <summary>
+            Stanje niti (pokrenuta ili ne).
+            </summary>
+        </member>
+        <member name="F:MySchedulers.MyThreadForPreemptiveScheduler.resursStatus">
+            <summary>
+            Status resursa koji se obradjuje na niti.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.MyThreadForPreemptiveScheduler.taskStatus">
+            <summary>
+            Stanje zadatka koji se izvrsava na niti.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.MyThreadForPreemptiveScheduler.timeInterval">
+            <summary>
+            Vremenski interval koji odredjuje koliko dugo ce se jedan zadatak izvrsavati na niti prije promjene konteksta.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.MyThreadForPreemptiveScheduler.run">
+            <summary>
+            Metoda kojom je implementirana logika niti pri preventivnom izvrsavanju zadataka.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.MyThreadForPreemptiveScheduler.restartThread">
+            <summary>
+            Metoda koja se poziva nakon promjene konteksta kako bi nit pocela sa izvrsavanjem zadatka koji je postavljen.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.MyThreadForPreemptiveScheduler.terminateThread">
+            <summary>
+            Metoda za "Unistavanje" nit.
+            </summary>
+        </member>
+        <member name="T:MySchedulers.NonPreemptiveScheduler">
+            <summary>
+            Klasa kojom se vrsi nepreventivno rasporedjivanje procesa-zadataka.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.NonPreemptiveScheduler.threadPool">
+            <summary>
+            Lista instanci klase MyThreadForNonPreemptiveScheduler na kojima ce biti izvrsivani zadaci.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.NonPreemptiveScheduler.listOfTasks">
+            <summary>
+            Lista zadataka koji ce biti biti rasporedjeni na niti.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.NonPreemptiveScheduler.numOfThreads">
+            <summary>
+            Broj niti koji ce biti na koristenju resporedjivacu.
+            Ako se ekcplicitno ne navede druga vrijednost,podrazumijevana je 3.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.NonPreemptiveScheduler.mapOfResursStatus">
+            <summary>
+            Mapa statusa resursa koji ce biti sinhronizovani pri rasporedjivanju.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.NonPreemptiveScheduler.addTask(MySchedulers.TaskToDo)">
+            <summary>
+            Metoda za dodavanje zadataka u listu zadataka listOfTasks.
+            </summary>
+            <param name="task"></param>
+        </member>
+        <member name="M:MySchedulers.NonPreemptiveScheduler.setNumOfThreads(System.Int32)">
+            <summary>
+            Metoda za eksplicitno navodjenje maksimalnog broja niti koje ce biti kreirane u procesu rasporedjivanja.
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:MySchedulers.NonPreemptiveScheduler.syncResurs(MySchedulers.Resurs)">
+            <summary>
+            Metoda kojom se navodi resurs koji ce biti sinhronizovano modifikovan pri izvrsavanju zadataka koji ga posjeduju.
+            </summary>
+            <param name="resurs"></param>
+        </member>
+        <member name="M:MySchedulers.NonPreemptiveScheduler.work">
+            <summary>
+            Metoda kojom se pokrece rasporedjivanje.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.NonPreemptiveScheduler.isAllThreadsWork">
+            <summary>
+            Metoda koja provjerava da li su sve niti u threadPool-u pokrenute.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.NonPreemptiveScheduler.isResursFree(MySchedulers.Resurs)">
+            <summary>
+            Metoda koja provjerava da li je prosljedjeni resurs zauzet od strane nekog zadatka koji se trenutno izvrsava.
+            </summary>
+            <param name="resurs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySchedulers.NonPreemptiveScheduler.getFreeThread">
+            <summary>
+            Metoda koja vraca nit koja je trenutno u stanju cekanja i moze se iskoristiti za izvrsavanje zadatka.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MySchedulers.MyThreadForNonPreemptiveScheduler">
+            <summary>
+            Klasa u kojoj je implementiran rad niti u nepreventivnom rasporedjivanju zadataka.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.MyThreadForNonPreemptiveScheduler.taskToDo">
+            <summary>
+            Zadatak koji se izvrsava na niti.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.MyThreadForNonPreemptiveScheduler.inRun">
+            <summary>
+            Stanje niti (pokrenuta ili ne).
+            </summary>
+        </member>
+        <member name="F:MySchedulers.MyThreadForNonPreemptiveScheduler.resursStatus">
+            <summary>
+            Status resursa koji se obradjuje na niti.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.MyThreadForNonPreemptiveScheduler.restartThread">
+            <summary>
+            Metoda koja se poziva nakon promjene konteksta kako bi nit pocela sa izvrsavanjem zadatka koji je postavljen.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.MyThreadForNonPreemptiveScheduler.run">
+            <summary>
+            Metoda kojom je implementirana logika niti pri nepreventivnom izvrsavanju zadataka.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.MyThreadForNonPreemptiveScheduler.terminateThread">
+            <summary>
+            Metoda za "Unistavanje" nit.
+            </summary>
+        </member>
+        <member name="T:MySchedulers.TaskToDo">
+            <summary>
+            Klasa kojoj se reprezentuje zadatak koji ce biti rasporedjen od strane oba tipa rasporedjivaca.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.TaskToDo.resurs">
+            <summary>
+            Objekata klase Resurs na kojim ce biti izvrsen zadatak
+            </summary>
+        </member>
+        <member name="F:MySchedulers.TaskToDo.listOfDelegates">
+            <summary>
+            Lista svih delegata od kojih je sacinjen jedan zadatak.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.TaskToDo.ILockedResurs">
+            <summary>
+            Podatak clan koji ukazuje na to da li je resur zaklucan od strane ovog zadatka.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.TaskToDo.addDelegate(MySchedulers.MethodDelegate)">
+            <summary>
+            Metoda za dodavanje delegata u jedan zadatak.
+            </summary>
+            <param name="md"></param>
+        </member>
+        <member name="M:MySchedulers.TaskToDo.addResurs(MySchedulers.Resurs)">
+            <summary>
+            Metoda za dodavanje resursa nad kojim ce biti izvrsen zadatak.
+            </summary>
+            <param name="r"></param>
+        </member>
+        <member name="T:MySchedulers.Resurs">
+            <summary>
+            Klasa kojom se reprezentuje resurs nad kojim ce se izvrsiti zadatak kojem je taj resurs dodijeljen.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.Resurs.firstOperand">
+            <summary>
+            Prvi operant u sklopu resursa.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.Resurs.secondOperand">
+            <summary>
+            Drugi operand u sklopu resursa.
+            </summary>
+        </member>
+        <member name="F:MySchedulers.Resurs.result">
+            <summary>
+            Operant u kojem su pohranjeni medjurezultati i na kraju sam rezultat citavog zadata.
+            </summary>
+        </member>
+        <member name="M:MySchedulers.Resurs.printsCurrentState">
+            <summary>
+            Metoda koja ispisuje vrijednost atributa resursa u trenutku kada je metoda pozvana.
+            </summary>
+        </member>
+        <member name="T:MySchedulers.ObjectSatus">
+            <summary>
+            Klasa kojom se reprezentuje stanje resursa i zadatka u procesu rasporedjivanja.
+            </summary>
+        </member>
+    </members>
+</doc>
